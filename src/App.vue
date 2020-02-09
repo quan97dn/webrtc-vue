@@ -1,15 +1,5 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-       
-      </div>
-    </v-app-bar>
-
     <v-content>
       <router-view />
     </v-content>
@@ -17,13 +7,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-export default Vue.extend({
-  name: 'App',
-  data: () => ({
-    //
-  }),
-});
+  import Vue from 'vue';
+  export default Vue.extend({
+    name: 'App',
+    data: () => ({
+      //
+    }),
+  });
 </script>
 
 <style lang="scss">
