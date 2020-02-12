@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire" :style="{backgroundColor: '#42A5F5'}">
+  <v-app id="inspire">
     <router-view />
   </v-app>
 </template>
@@ -11,3 +11,9 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+  #inspire {
+    background-color: #42A5F5;
+  }
+</style>

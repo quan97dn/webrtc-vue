@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+import Auth from '../../shared/auth/authentication';
 
 export default {
   data() {
@@ -55,21 +55,21 @@ export default {
       valid: true,
       value: true,
       fields: {
-        email: "",
-        password: ""
+        email: '',
+        password: ''
       },
       rules: {
         emailRules: [
-          v => !!v || "E-mail is required",
+          v => !!v || 'E-mail is required',
           v => /.+@.+/.test(v) || "E-mail must be valid"
         ],
         passwordRules: [
-          v => !!v || "Password is required",
+          v => !!v || 'Password is required',
           v => {
             const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#%&])(?=.{8,})/;
             return (
               pattern.test(v) ||
-              "Min. 8 characters with at least one capital letter, a number and a special character."
+              'Min. 8 characters with at least one capital letter, a number and a special character.'
             );
           }
         ]
@@ -79,20 +79,16 @@ export default {
   methods: {
     signIn: function() {
       if (this.$refs.form.validate()) {
-        firebase.auth().signInWithEmailAndPassword(this.fields.email, this.fields.password).then((user) => {
-          //
-          console.log(user);
-        }, (error) => {
-          //
-          console.log(error);
+        Auth.signIn({ email: this.fields.email, password: this.fields.password }, () => {
+          this.$router.replace({ name: 'Dashboard' });
+        }, (err) => {
+          // Error
         });
       }
     },
     goToRegister: function() {
-      this.$router.replace("Register");
+      this.$router.replace({ name: 'Register' });
     }
   }
 };
 </script>
-
-
