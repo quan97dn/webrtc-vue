@@ -7,6 +7,9 @@
             <v-toolbar color="primary" dark flat>
               <v-toolbar-title>Login</v-toolbar-title>
               <v-spacer />
+              <v-btn @click="goToRegister()" icon>
+                <v-icon>add_circle_outline</v-icon>
+              </v-btn>
             </v-toolbar>
             <v-card-text>
               <v-form ref="form" v-model="valid" lazy-validation>
@@ -34,7 +37,7 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn color="primary" @click="submit()" :disabled="!valid">Login</v-btn>
+              <v-btn color="primary" @click="signIn()" :disabled="!valid">Login</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -44,6 +47,8 @@
 </template>
 
 <script>
+import firebase from 'firebase';
+
 export default {
   data() {
     return {
@@ -72,12 +77,19 @@ export default {
     };
   },
   methods: {
-    submit: function() {
-      const value = this.fields;
+    signIn: function() {
       if (this.$refs.form.validate()) {
-        //
+        firebase.auth().signInWithEmailAndPassword(this.fields.email, this.fields.password).then((user) => {
+          //
+          console.log(user);
+        }, (error) => {
+          //
+          console.log(error);
+        });
       }
-      console.log(value);
+    },
+    goToRegister: function() {
+      this.$router.replace("Register");
     }
   }
 };
