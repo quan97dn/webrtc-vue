@@ -51,7 +51,7 @@
 import Auth from '../../shared/core/auth/authentication';
 
 export default {
-  data() {
+  data () {
     return {
       valid: true,
       value: true,
@@ -78,7 +78,7 @@ export default {
     };
   },
   methods: {
-    signUp: function() {
+    signUp: function () {
       if (this.$refs.form.validate()) {
         Auth.signUp({ email: this.fields.email, password: this.fields.password }, () => {
           this.$router.replace({ name: 'Dashboard' });
@@ -88,7 +88,7 @@ export default {
         });
       }
     },
-    goToLogin: function() {
+    goToLogin: function () {
       this.$router.replace('Login');
     }
   }

@@ -12,8 +12,6 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-  #inspire {
-    background-color: #42A5F5;
-  }
+<style scoped>
+ 
 </style>
