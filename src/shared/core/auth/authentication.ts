@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 
-import { SignIn } from  '../common/interfaces/interface-auth';
+import { SignIn } from  '../../common/interfaces/interface-auth';
 
 export default {
   signIn (data: SignIn, complete: any, error?: any) {

@@ -10,9 +10,14 @@
   import Vue from 'vue';
   export default Vue.extend({
     name: 'App',
-    data: () => ({
-      //
-    }),
+    created () {
+      this.$vuetify.theme.dark = true
+    },
+    data: function () {
+      return {
+        //
+      }
+    }
   });
 </script>
 

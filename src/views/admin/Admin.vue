@@ -49,12 +49,9 @@
 </template>
 
 <script>
-import Auth from '../../shared/auth/authentication';
+import Auth from '../../shared/core/auth/authentication';
 
 export default {
-  created () {
-    this.$vuetify.theme.dark = true
-  },
   data() {
     return {
       snackbar: false,

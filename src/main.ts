@@ -9,7 +9,7 @@ import firebase from 'firebase'
 // PWA
 import './registerServiceWorker'
 // AUTH
-import { firebaseConfig } from './shared/auth/firebase-config'
+import { firebaseConfig } from '../src/shared/core/auth/firebase-config';
 
 Vue.config.productionTip = false
 

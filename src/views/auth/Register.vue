@@ -20,6 +20,7 @@
                   v-model="fields.email"
                   :rules="rules.emailRules"
                   type="text"
+                  autocomplete="off"
                   required
                 />
                 <v-text-field
@@ -47,7 +48,7 @@
 </template>
 
 <script>
-import Auth from '../../shared/auth/authentication';
+import Auth from '../../shared/core/auth/authentication';
 
 export default {
   data() {
@@ -81,8 +82,9 @@ export default {
       if (this.$refs.form.validate()) {
         Auth.signUp({ email: this.fields.email, password: this.fields.password }, () => {
           this.$router.replace({ name: 'Dashboard' });
-        }, error => {
+        }, (error) => {
           // Error
+          console.log(error);
         });
       }
     },

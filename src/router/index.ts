@@ -3,13 +3,10 @@ import VueRouter from 'vue-router'
 import firebase from 'firebase'
 
 // Route Authentication
-import Auth from '../views/auth/Auth.vue'
-import Login from '../views/auth/Login.vue'
-import Register from '../views/auth/Register.vue'
+import Auth from './auth/index';
 
 // Route Admin
-import Admin from '../views/admin/Admin.vue'
-import Dashboard from '../views/admin/Dashboard.vue'
+import Admin from './admin/index';
 
 Vue.use(VueRouter)
 
@@ -26,38 +23,8 @@ const routes = [
       name: 'Login',
     },
   },
-  {
-    path: '/auth',
-    name: 'Auth',
-    component: Auth,
-    children: [
-      {
-        path: 'login',
-        name: 'Login',
-        component: Login,
-      },
-      {
-        path: 'register',
-        name: 'Register',
-        component: Register,
-      },
-    ]
-  },
-  {
-    path: '/admin',
-    name: 'Admin',
-    component: Admin,
-    meta: {
-      requiresAuth: true
-    },
-    children: [
-      {
-        path: 'dashboard',
-        name: 'Dashboard',
-        component: Dashboard,
-      }
-    ]
-  }
+  Auth,
+  Admin
 ]
 
 const router = new VueRouter({
