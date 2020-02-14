@@ -61,6 +61,7 @@ export default {
   methods: {
     signOut () {
       Auth.signOut(() => {
+        this.$store.commit('Auth/setLogined', false);
         this.$router.replace({ name: 'Login' });
       }, () => {
         this.snackbar = true;

@@ -11,7 +11,7 @@
                 <v-icon>input</v-icon>
               </v-btn>
             </v-toolbar>
-            <v-card-text>
+            <v-card-text @keyup.enter="signIn()">
               <v-form ref="form" v-model="valid" lazy-validation>
                 <v-text-field
                   id="email"

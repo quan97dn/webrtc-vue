@@ -1,6 +1,6 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import firebase from 'firebase'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import store from '../store/index';
 
 // Route Authentication
 import Auth from './auth/index';
@@ -30,11 +30,13 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 })
 
-router.beforeEach((to, from, next) => {
-  const currentUser = firebase.auth().currentUser;
+router.beforeEach(async (to, from, next) => {
+  store.dispatch('Auth/getCurrentUser');
+  const currentUser = store.getters['Auth/getCurrentUser'];
+
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
   if (requiresAuth && !currentUser) next({ name: 'Login' });
