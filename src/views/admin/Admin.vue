@@ -38,7 +38,7 @@
       </v-content>
 
       <v-footer app>
-        <span>&copy; 2019</span>
+        <span>&copy; 2020</span>
       </v-footer>
 
       <v-snackbar v-model="snackbar">
