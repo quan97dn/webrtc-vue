@@ -13,10 +13,10 @@
     created () {
       this.$vuetify.theme.dark = true
     },
-    data: function () {
+    data () {
       return {
-        //
-      }
+
+      };
     }
   });
 </script>
