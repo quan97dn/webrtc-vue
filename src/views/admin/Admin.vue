@@ -1,35 +1,9 @@
 <template>
   <div>
     <v-app id="inspire">
-      <v-navigation-drawer v-model="drawer" app clipped>
-        <v-list dense>
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon>dashboard</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Dashboard</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon>group</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Users</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </v-navigation-drawer>
+      <app-navbar :drawer="drawer"></app-navbar>
 
-      <v-app-bar app clipped-left>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-        <v-toolbar-title>Web RTC</v-toolbar-title>
-        <v-spacer />
-        <v-btn @click="signOut()" text icon color="white">
-          <v-icon>launch</v-icon>
-        </v-btn>
-      </v-app-bar>
+      <app-header @drawer="changeDrawer($event)"></app-header>
 
       <v-content>
         <v-container class="fill-height" fluid>
@@ -37,9 +11,7 @@
         </v-container>
       </v-content>
 
-      <v-footer app>
-        <span>&copy; 2020</span>
-      </v-footer>
+      <app-footer></app-footer>
 
       <v-snackbar v-model="snackbar">
         SignOut Fail! <v-btn color="pink" text @click="snackbar = false">Close</v-btn>
@@ -49,24 +21,29 @@
 </template>
 
 <script>
-import Auth from '../../shared/core/auth/authentication';
+
+
+// Component
+import Header from '../../components/layout/admin/Header';
+import Navbar from '../../components/layout/admin/Navbar';
+import Footer from '../../components/layout/admin/Footer';
 
 export default {
-  data() {
+  data () {
     return {
       snackbar: false,
-      drawer: null,
+      drawer: true,
     };
   },
   methods: {
-    signOut () {
-      Auth.signOut(() => {
-        this.$store.commit('Auth/setLogined', false);
-        this.$router.replace({ name: 'Login' });
-      }, () => {
-        this.snackbar = true;
-      });
-    }
+    changeDrawer (drawer) {
+      this.drawer = drawer;
+    },
+  },
+  components: {
+    'app-header': Header,
+    'app-navbar': Navbar,
+    'app-footer': Footer,
   }
 };
 </script>
