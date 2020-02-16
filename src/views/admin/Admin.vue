@@ -12,10 +12,6 @@
       </v-content>
 
       <app-footer></app-footer>
-
-      <v-snackbar v-model="snackbar">
-        SignOut Fail! <v-btn color="pink" text @click="snackbar = false">Close</v-btn>
-      </v-snackbar>
     </v-app>
   </div>
 </template>
@@ -31,7 +27,6 @@ import Footer from '../../components/layout/admin/Footer';
 export default {
   data () {
     return {
-      snackbar: false,
       drawer: true,
     };
   },

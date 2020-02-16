@@ -5,6 +5,10 @@ import Admin from './admin/index';
 
 import Auth from './auth/index';
 
+import Snackbar from './partial/snackbar';
+
+import Alert from './partial/alert';
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -17,5 +21,7 @@ export default new Vuex.Store({
   modules: {
     Admin,
     Auth,
+    Snackbar,
+    Alert,
   }
 })

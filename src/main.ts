@@ -15,6 +15,8 @@ import { firebaseConfig } from '../src/shared/core/auth/firebase-config';
 // JS COMMON
 import './shared/common/typescript/index';
 
+import './shared/common/styles/common/index.scss';
+
 Vue.config.productionTip = false;
 
 let app: any;

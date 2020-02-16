@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" app clipped>
+  <v-navigation-drawer v-model="isDrawer" app clipped>
     <v-list dense>
       <v-list-item link>
         <v-list-item-action>
@@ -24,9 +24,14 @@
 <script>
 export default {
   props: ['drawer'],
-  data () {
+  data: function () {
     return {
-      //
+      isDrawer: true,
+    }
+  },
+  watch: {
+    drawer () {
+      this.isDrawer = this.drawer;
     }
   }
 }
