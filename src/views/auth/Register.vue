@@ -5,16 +5,14 @@
         <v-col cols="12" sm="8" md="4">
           <v-card class="elevation-12">
             <v-toolbar color="primary" dark flat>
-              <v-toolbar-title>Login</v-toolbar-title>
+              <v-toolbar-title>Register</v-toolbar-title>
               <v-spacer />
-              <v-btn @click="goToRegister()" icon>
-                <v-icon>add_circle_outline</v-icon>
+              <v-btn @click="goToLogin()" icon>
+                <v-icon>input</v-icon>
               </v-btn>
             </v-toolbar>
             <v-card-text @keyup.enter="signIn()">
-              <v-form ref="form" 
-                      v-model="valid" 
-                      lazy-validation>
+              <v-form ref="form" v-model="valid" lazy-validation>
                 <v-text-field
                   id="email"
                   label="Email"
@@ -40,7 +38,7 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn color="primary" @click="signIn()" :disabled="!valid">Login</v-btn>
+              <v-btn color="primary" @click="signUp()" :disabled="!valid">Register</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -64,7 +62,7 @@ export default {
       rules: {
         emailRules: [
           v => !!v || 'E-mail is required',
-          v => /.+@.+/.test(v) || "E-mail must be valid"
+          v => /.+@.+/.test(v) || 'E-mail must be valid'
         ],
         passwordRules: [
           v => !!v || 'Password is required',
@@ -80,24 +78,19 @@ export default {
     };
   },
   methods: {
-    signIn: function () {
+    signUp: function () {
       if (this.$refs.form.validate()) {
-        Auth.signIn({ email: this.fields.email, password: this.fields.password }, () => {
-          this.$store.commit('Auth/setLogined', true);
+        Auth.signUp({ email: this.fields.email, password: this.fields.password }, () => {
           this.$router.replace({ name: 'Dashboard' });
-        }, (err) => {
+        }, (error) => {
           // Error
-          console.log(err);
+          console.log(error);
         });
       }
     },
-    goToRegister: function () {
-      this.$router.replace({ name: 'Register' });
+    goToLogin: function () {
+      this.$router.replace('Login');
     }
   }
 };
 </script>
-
-<style scoped>
-
-</style>
