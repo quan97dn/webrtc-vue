@@ -5,6 +5,7 @@
     </v-content>
     <app-snackbar></app-snackbar>
     <app-alert></app-alert>
+    <app-dialog></app-dialog>
   </v-app>
 </template>
 
@@ -12,6 +13,7 @@
 import Vue from 'vue';
 import Snackbar from './components/partial/Snackbar';
 import Alert from './components/partial/Alert';
+import Dialog from './components/partial/Dialog';
 
 export default Vue.extend({
   name: 'App',
@@ -26,6 +28,7 @@ export default Vue.extend({
   components: {
     'app-snackbar': Snackbar,
     'app-alert': Alert,
+    'app-dialog': Dialog,
   }
 });
 </script>

@@ -9,6 +9,8 @@ import Snackbar from './partial/snackbar';
 
 import Alert from './partial/alert';
 
+import Dialog from './partial/dialog';
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -23,5 +25,6 @@ export default new Vuex.Store({
     Auth,
     Snackbar,
     Alert,
+    Dialog,
   }
 })
